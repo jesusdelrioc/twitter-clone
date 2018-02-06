@@ -10,13 +10,14 @@ router.get('/new-tweet', function (req, res, next) {
 });
 router.post('/form-tweet', (req, res, next) => {
     const user = req.session.currentUser
-    if (err) { return; }
+    
 
     const newTweet = new Tweet({
         user_id: user._id,
         user_name: user.username,
-        tweet: req.body.tweetText
+        tweet: req.body.tweet
     });
+   
 
     newTweet.save((err) => {
         if (err) {
@@ -26,7 +27,7 @@ router.post('/form-tweet', (req, res, next) => {
                     errorMessage: err.errors.tweet.message
                 });
         } else {
-            res.redirect("/tweets");
+            res.redirect("/");
         }
     });
 });

@@ -59,7 +59,7 @@ auth.post('/login', (req, res, next) => {
 
     User.findOne({ "username": username }, (err, user) => {
         if (user == null) {
-            res.render("auth/login", {
+            res.render("login", {
                 errorMessage: "The username doesnt exists"
             });
             return;
@@ -69,7 +69,7 @@ auth.post('/login', (req, res, next) => {
                 console.log("user");
                 res.redirect("/private")
             } else {
-                res.render("auth/login", {
+                res.render("login", {
                     errorMessage: "Incorrect password"
                 });
             }
@@ -90,5 +90,6 @@ auth.get("/logout", (req, res, next) => {
         res.redirect("/login");
     }
    });
+   
 
 module.exports = auth
