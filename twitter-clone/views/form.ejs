@@ -1,0 +1,11 @@
+<h2>New Tweet</h2>
+
+<form action="/form-tweet" method="POST" id="form-container">
+  <label for="tweet">Text</label>
+  <input type="text" name="tweet">
+  <br><br>
+  <% if (typeof(errorMessage) != "undefined") { %>
+    <div class="error-message"> <%= errorMessage %> </div>
+  <% } %>
+  <button>Create tweet</button>
+</form>

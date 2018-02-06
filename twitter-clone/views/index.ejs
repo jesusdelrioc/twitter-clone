@@ -11,7 +11,16 @@
     <a href="/login">Login</a>
     <% if(user){ %>
     <a href="/logout">logout</a>
+    <br>
+    <a href="/new-tweet">New Tweet</a>
+    <br>
+    <br>
     <img src="https://ep00.epimg.net/ccaa/imagenes/2013/04/25/galicia/1366905848_912219_1366905901_noticia_normal.jpg" alt="">
+    <% tweets.forEach((tweet) => { %>
+      <p><%=tweet.tweet %></p>
+      <p><%=tweet.user_name %></p>
+      <hr>
+    <% }) %>
     <% } %>
   </body>
 </html>

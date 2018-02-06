@@ -13,6 +13,7 @@ const MongoStore = require("connect-mongo")(session);
 const index = require('./routes/index');
 const users = require('./routes/users');
 const auth =require('./routes/auth');
+const tweetController= require('./routes/tweet');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(
 app.use('/', index);
 app.use('/users', users);
 app.use('/' , auth)
+app.use('/', tweetController)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
