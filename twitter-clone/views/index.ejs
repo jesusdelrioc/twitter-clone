@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>twitter</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>twitter</h1>
+    <p>Welcome to twitter</p>
     <a href="/signup">Signup</a>
     <a href="/login">Login</a>
+    <% if(user){ %>
+    <a href="/logout">logout</a>
+    <img src="https://ep00.epimg.net/ccaa/imagenes/2013/04/25/galicia/1366905848_912219_1366905901_noticia_normal.jpg" alt="">
+    <% } %>
   </body>
 </html>

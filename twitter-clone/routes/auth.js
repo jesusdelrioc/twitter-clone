@@ -78,14 +78,17 @@ auth.post('/login', (req, res, next) => {
 })
 
 auth.get('/private', (req, res, next) => {
-    console.log(req.session.currentUser)
-    if (req.session.currentUser) {
-        res.render('private')
-    } else {
-        res.redirect('/')
-        console.log("no existe el usuario")
-    }
-
+    user=req.session.currentUser;
+    console.log(user)
+    res.redirect('/')
 });
+
+auth.get("/logout", (req, res, next) => {
+    if (!req.session.currentUser) { res.redirect("/"); return; }
+    else{
+        req.session.currentUser = null
+        res.redirect("/login");
+    }
+   });
 
 module.exports = auth
