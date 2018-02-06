@@ -5,6 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const session= require('express-session');
+const MongoStore = require("connect-mongo")(session);
+
 
 
 const index = require('./routes/index');
@@ -26,6 +29,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  session({
+    secret: "basic-auth-secret",
+    cookie: { maxAge: 20 * 60 * 1000 },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 21 * 60 * 60 
+    })
+  })
+);
 
 app.use('/', index);
 app.use('/users', users);
