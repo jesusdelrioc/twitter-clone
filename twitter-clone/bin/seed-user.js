@@ -21,6 +21,8 @@ const users = [
         password: encrypted
     }
 ]
+User.collection.drop()
+
 User.create(users, (err, docs) => {
     if(err){
         throw err
